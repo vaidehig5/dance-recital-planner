@@ -1,0 +1,42 @@
+:root {
+  --purple-dark: #3b1763;
+  --purple: #7c3aed;
+  --lavender: #f5f0ff;
+  --border: #e4d9f7;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #ffffff;
+  color: #2a2238;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--lavender);
+  padding: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.1);
+  padding: 2rem 2.5rem;
+  max-width: 520px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--purple-dark);
+  margin-top: 0;
+}
+
+.status {
+  color: var(--purple);
+  font-weight: 600;
+}
