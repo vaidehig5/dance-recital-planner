@@ -4,6 +4,7 @@ from flask import Blueprint, jsonify, request
 
 from backend.parsers.errors import SpreadsheetError
 from backend.parsers.spreadsheet_parser import parse_spreadsheet
+from backend.validation.spreadsheet_validator import validate_columns
 
 api_bp = Blueprint("api", __name__, url_prefix="/api")
 
@@ -24,4 +25,11 @@ def upload():
     except SpreadsheetError as error:
         return jsonify(error=str(error)), 400
 
-    return jsonify(columns=[asdict(column) for column in columns])
+    result = validate_columns(columns)
+
+    return jsonify(
+        columns=[asdict(column) for column in columns],
+        is_valid=result.is_valid,
+        errors=[asdict(issue) for issue in result.errors],
+        warnings=[asdict(issue) for issue in result.warnings],
+    )
